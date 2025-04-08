@@ -1,0 +1,16 @@
+Creating your own xpath.
+--------------------------
+Steps to create your own xpath.
+
+Step1: goto the page you want to find your xpath.
+
+
+Step2: Click on inspect element.
+
+
+Step3: in the inspect region click ctrl+f
+
+
+Step4: Syntax for finding Xpath.
+//tagname[@attribute='value'] or //*[@attribute='value']
+

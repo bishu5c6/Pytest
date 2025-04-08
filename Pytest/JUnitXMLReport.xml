@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="4" time="0.303" timestamp="2025-02-11T15:20:36.311664+05:30" hostname="DESKTOP-PV4AHCP"><testcase classname="test_assertion" name="test_assertions" time="0.003"><failure message="assert 4 == 5">def test_assertions():
+&gt;       assert 4==5
+E       assert 4 == 5
+
+test_assertion.py:2: AssertionError</failure></testcase><testcase classname="test_assertion" name="test_one" time="0.001"><failure message="AssertionError: a and b are not equal&#10;assert False&#10; +  where False = &lt;method-wrapper '__eq__' of str object at 0x0000028231E779F0&gt;('varun')&#10; +    where &lt;method-wrapper '__eq__' of str object at 0x0000028231E779F0&gt; = 'arun'.__eq__">def test_one():
+        a = "arun"
+        b = "varun"
+&gt;       assert a.__eq__(b), "a and b are not equal"
+E       AssertionError: a and b are not equal
+E       assert False
+E        +  where False = &lt;method-wrapper '__eq__' of str object at 0x0000028231E779F0&gt;('varun')
+E        +    where &lt;method-wrapper '__eq__' of str object at 0x0000028231E779F0&gt; = 'arun'.__eq__
+
+test_assertion.py:9: AssertionError</failure></testcase><testcase classname="test_case" name="test_sample" time="0.001" /><testcase classname="test_case" name="test_sample2" time="0.001" /></testsuite></testsuites>

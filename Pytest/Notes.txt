@@ -1,0 +1,488 @@
+Road-Map:
+---------
+1. Python Basics
+2. Selenium webdriver.
+3. pyTest
+4. Page Object Model
+5. Frame work design
+6. Live Project.
+
+Selenium Webdriver is the world largest tool to handle automation testing.
+some major concepts in selenium webdriver:
+------------------------------------------
+1. Locators
+2. Browser commands.
+3. Checkbox & Dropdown.
+4. waits
+5. window handling.
+6. Frames & Alerts.
+7. Javascript.
+8. Handle calendar
+9. Actions.
+
+Pytest Framework:
+-----------------
+1. Pytest Setup.
+2. Pytest Execute.
+3. Grouping.
+4. Parallel execution.
+5. Fixture.
+6. Confest.py file.
+7. Parametrize.
+8. HTML Reporting.
+
+what is the main use of pytest:
+In pytest we can run some test methods.
+
+Locators in Selenium:
+---------------------
+Locators are the main important thing in selenium
+
+In Login page the main important thing is the enter something that we can proceed forward with the action.
+In order to find that specific element we will use the locators in selenium.
+By inspecting those we can find the locators.
+
+DOM _ document object model.
+each locators has different tags.
+
+Some important Locators are:
+BY.id
+name
+class_name
+tag_name
+Link_text
+partial_link_text
+css_selector
+x.path
+
+
+Downloading and installing pytest.
+----------------------------------
+The pytest framework makes it easy to write small, readable tests and can scale
+to support complex functional testing for application and libraries.
+
+To install pytest in your browser.
+
+pip install -U pytest.
+
+How to create a first test case using pytest.
+
+Created a folder
+
+To run the file in the terminal write pytest.
+
+It should be better use pycharm when you run the pytests.
+
+In order to pytest files you have to follow some rules.
+-------------------------------------------------------
+1. file names and method name should start with - for pytest to detect files or method names,
+   they need to start with test_
+2. No need for package name should start with.
+
+By running pytest you will not get any output.
+
+To get the output you need to run the flags.
+
+Syntax:
+--------
+pytest -rA
+
+To run the test cases use two types
+1) pytest
+2) py.test
+
+
+Assertions in Pytest:
+---------------------
+assertions in pytest are used to check whether a condition is true or false.
+assertion can be used with the help of assert keyword.
+
+Different types of assertions in Pytest.
+
+assert a==b
+assert a>b
+assert a.__eq__(b) means equals
+assert a==b, "a is not equal to b"
+
+Flags in Pytest: The main purpose of flags to understand the details of the pytest
+----------------
+to find all the flags available use:
+
+pytest --help or -h. Information about all the flags that are present in pytest.
+
+pytest -v verbose it will show you exactly where the error occurs more details about the failed tests.
+
+pytest -rA to show the outputs. and both success and failure tests can be shown.
+
+pytest -k if you want to run only one test case in multiple test cases use these.
+
+If you have multiple test cases and need to one or three test cases then you have to use regular expressions.
+
+pytest -k "one or two"
+
+pytest -k "not one"
+
+etc..
+
+You are running pytests by writing some commands in the terminal.
+you can also run pytest without opening terminal 
+In order to do this you have to change some configuration.
+
+at the top you will find dropdown with filename
+In the dropdown click on edit configuration.
+click on + select pytest
+
+If you want to run only one file use pytest samplefile.py
+
+Generating Junit XML report
+---------------------------
+pytest -h
+
+pytest --junit-xml-path -  It is used to generate the xml report.
+
+pytest -rA --junit-xml="JUnitXMLReport.xml"
+
+Generating HTML Report:
+-----------------------
+TO generate HTML report fisrt you have to install pytest
+command for installing pytest
+
+
+
+pip install pytest-html
+
+after installing pytest you have to run the command.
+
+pytest -rA --html="HTMLpytest_report.html"
+
+
+Pytest Markers: these are user defined markers.
+---------------
+pytest markers are a powerful feature that allows you to add metadata or labels
+to your test functions, making it easier to organize your test suite.
+
+give two functions name with same or different name
+
+by using marker function you can run the function name with 
+same markers
+
+The command for running the same function name is as follows.
+pytest -rA -m regression regression is my marker name.
+
+pytest -rA -m "smoke or regression".
+
+Custome markers::
+----------------
+In your project create pytest.ini file.
+in that file write the following code.
+[pytest]
+markers = smoke: this is a smoke test marker.
+          regression : this is a regression marker.
+
+when you don't use the custom markers you will get warnings.
+If you don't want any warnings you have to use the custom marker.
+
+during the runtime if you want to skip some methods
+@pytest.mark.skip
+
+In order to run the individual the pytest file.
+
+pytest filename -rA
+in built markers in Pytest. 
+@pytest.mark.xfail - helps in identify the expected pass and fail 
+in the given test scenarios.
+
+Executing pytests from the command line.
+
+Grouping in pytest
+-------------------
+pytest -vs -m smoke
+
+use the same method name smoke
+
+when you run the command using smoke it will get executed.
+
+Fixtures in Pytest:
+-----------------------------------------
+fixtures are mainly used to coordinate the test methods with test files.
+you have
+login code writing in selenium.
+
+setup : launching browser 
+
+test1: loging with valid credntaisl
+
+test2: with invlaid credentials
+
+closure''logout close browser.
+
+the setup code needs to run before every test method
+
+pytest -vs
+
+creating fixture inside confest.py
+----------------------------------
+above code you are running is useful for smaller codes 
+In order to create large number of fixtures you have use these types of code.
+
+It is useable for when we have two or more files.
+what if you have 100+ giles
+
+then you have to use confest.py file
+
+autouse attribute in Pytest fixture.
+------------------------------------
+@pytest.fixture(autouse = True)
+It is used to when we remove setup fixture in method files
+you have to use these files.
+
+In the conftest file you have to use autouse= True
+then you don't have to use the fixture method in file.
+
+In conftest.py file for pytest if you write autouse=true 
+It can run with all the files.
+
+scope attribute in pytest:
+-------------------------
+different types of scopes are available in pytest:
+
+some of them are:
+scope = "function"
+scope = "session"
+scope = "class"
+scope = "package"
+scope = "module"
+
+The syntax is as follows : 
+@pytest.fixture(scope = "function")
+function and session are the important ones.
+
+when you write scope = function
+first setup code will be run after
+function code run
+then closure will be run. if you dont defined it will also be as scope = function
+
+scope = session
+setup and closure will run only at a time 
+
+parallel execution of Pytest using x-dist
+-----------------------------------------
+If you want to run your code in parallel manner
+pip install pytest-xdist
+
+after installing if you want to run the code
+
+pytest -n 6
+
+
+Running Individual tests in pytest using pycharm options.
+--------------------------------------------------------
+you need to change these following settings to run the pycharm options.
+
+file>settings>Tools>python Integrated tools> Default test running.
+
+after opening python integrated tools you have to change the 
+testing dropdown from unittesting to Pytest.
+
+Hook functions which acts like a fixture.
+-----------------------------------------
+
+in a single page you have multiple test methods
+some people will use  hook function and some of them will use fixtures.
+
+Different Hook functions are present.
+1. setup_function(function).
+2. teardown_function(function).
+3. setup_module(module).
+4. teardown_module(module).
+
+setup function and teardown function runs between every module.
+setup module and teardown module runs only once.
+
+Soft Assertions in pytest:
+---------------------------
+In the functions what you are using are called assertions.
+Right now you are learning about soft assertions.
+
+
+Soft assertions are the ones in which the test execution does not stop if the test does 
+not meet the assertion condition. 
+The remaining tests are executed. All the above methods also work with soft assertions.
+If the test  failed it doesnot stop it will go all the execute all test cases.
+
+Hard Assert is a technique used in software testing to check whether a certain condition is true or not. 
+In other words, it is a way of verifying that a certain piece of code is working as expected. 
+If the test failed it stops there.
+
+How to install assertions in the pycharm IDE.
+
+pip install pytest-soft-assertions.
+
+after installing the above code run 
+
+pytest -vs --soft-asserts
+
+
+
+
+*********************Integrating Selenium code with pytest*****************************************
+
+/using pytest and selenium code we are writing codes.
+
+using pytest and selenium search for valid and invalid products.
+
+//input[@id='button-search']/following-sibling::p
+
+In every pytest we are covering the same steps like
+opening the window and closing the window and driver.quit()
+to overcome these scenario we will use setup and tear down approach like fixtures.
+
+you don't have to use fixture in all the code you have to create a file
+that can be used in all the directions.
+
+confest.py these file can be used to create all the files in pytest.
+to create a common fixture across mutliple common python files use 
+confest.py file.
+
+How to run these confest.py in file in all the individual files.
+you have to use the fixture decorators.
+
+steps:
+1. Created a class test.
+2. write @pytest.usefixture(setup and teardown)
+after writing these you will get some issues
+3. in order to overcome these use request fixtures.
+
+
+
+Generate Allure reports with python:(advanced insights)..
+------------------------------------
+what is allure reports?
+Allure Report is an open-source framework designed to create test execution reports that are clear, 
+concise, and attractive.
+It provides a visual and user-friendly interface that allows 
+developers and testers to obtain detailed insights into what is happening in their tests.
+
+Prerequisites:
+---------------
+1. Install java.(requires java to be installed).
+download Java JDk
+install LTS version means long term support.
+
+https://www.oracle.com/in/java/technologies/downloads/#jdk24-windows
+
+make sure java is independent variable path
+
+2. Install NodeJS
+
+3. Install allur command line tool.
+In the command prompt run the below command.
+npm install -g allure-commandline
+The above command will install Allure globally on your machine.
+To verify installation allure run the below command
+allure--version
+
+add allure in the environment Varaiable
+
+command line:
+C:\Users\temp\AppData\Roaming\npm\node_modules\allure-commandline\bin
+
+next step is powershell:
+---------------------
+OPen powershell as administrator.
+check current execution policy. run( Get-ExecutionPolicy)
+When you run the above command output is restricted.
+Powershell scripts are unabled on machines.
+
+Change the above command to
+
+Set-ExecutionPolicy RemoteSigned
+
+Enable Powershell scripts.
+Run allure command in powershell.
+
+To generate Allure reports first Install the allure pytest in charm
+terminal.
+pip install allure-pytest
+
+Run the Pytest commands.
+
+pytest --alluredir="./reports"
+
+After running these command files aill be created and will store in current directory as JSON files.
+
+and the final step will be
+run the final step in command promt
+ allure serve "path of reports"
+
+For you have the write the below command.
+
+allure serve "./reports"
+
+Attaching screenshots in Allure reports:
+-----------------------------------------
+
+Whereever you want to take a screenshot write these below command.
+
+import allure
+
+allure.attach(self.driver.get_screenshot_as_png(),name="",attachment_type=AttachmentType.PNG)
+
+RUn a Particular folder using pytest.
+
+Pytest tests\test_Search.py --alluredir="./reports"
+
+To open the allure reports in html
+copy the current path directory 
+and go to command prompy
+allure serve "./reports"
+
+Adding severity levels with help of allure reports.
+---------------------------------------------------
+we can mention different kind of severity based on the allure reports.
+We have 4 different types of severities
+
+1. MINOR
+2. Normal
+3. MAJPR
+4. CRITICAL
+
+If you want to severity level of all the files in same way use
+below the class mention i.e above the class mention 
+@allure.severity(allure.severity_level.CRITICAL)
+
+Sharing allure reports:
+------------------------
+allure reports is not stored at a permanent loaction'
+when you run the again it will again store in a different location.
+
+pytest test\test_search.py --alluredir ="./reports"
+
+after opening command write allure serve "./reports"
+
+It will create a temporary directory.
+ when you close these file you won't be able to open a new directory.
+
+netlify
+
+1. create a account in the above file to share reports.
+
+Taking screenshot only on failures.
+----------------------------------
+to write these code you have to write the code in confest.py file. 
+
+Parameterizing fixtures using params
+---------------------------------------
+when you want to run different types of test scenarios that needs to work on
+different browsers at a time.
+ you need to use these parametrizing fixtures.
+
+Passing options from pytest commands:
+-------------------------------------
+
+def pytest_addoption(parser):
+   parser.addoption("--browser")
+
+how to run these code.
+
+pytest tests\test_search.py --browser chrome
